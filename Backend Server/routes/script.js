@@ -2,6 +2,7 @@ const rp = require('request-promise');
 const cheerio = require('cheerio');
 var fs = require('fs');
 var count=1;
+
 exports.cryptoByVolumeTraded = async function (req, res){
   console.log('testing query', req.query.page, req.query.count);
   var page = req.query.page;
@@ -10,7 +11,7 @@ exports.cryptoByVolumeTraded = async function (req, res){
     page = 1;
   }
   if(count == undefined){
-    count = 20;
+    count = 10;
   }
 
   if(fs.existsSync('data.json')){
@@ -21,16 +22,16 @@ exports.cryptoByVolumeTraded = async function (req, res){
         var time_diff = Date.now()-data.Timestamp;
         var mins=(time_diff/1000)/60;
         console.log(mins);
-        if(mins<1){
+        if(mins<10){
           var result=[];
           //console.log("len= ",data.data.length);
-          for(let i=(page*count)-count; i<=(page*count);i++){
+          for(let i=(page*count)-count; i<(page*count);i++){
             if(data.data[i]!=null){
               result.push(data.data[i]);
             }
           }
           test={
-            'Total_records': data.data.Total_records,
+            'Total_records': data.Total_records,
             'data': result
           }
           resolve (test);
@@ -38,30 +39,23 @@ exports.cryptoByVolumeTraded = async function (req, res){
         else {
           var data = createDataJson(page, count);
           data.then((response) => {
-            var result={
-              'data': response
-            }
-            resolve(result);
+            resolve(response);
           })
         }
       });
     });
     p1.then((response) => {
-      console.log('check this carefully', response.data);
-      console.log(response.data.length)
       //var data= JSON.parse(response.data);
-      console.log('check here',result);
       res.status(200).send(response);
     })
   }
   else {
     var result= await createDataJson(page, count);
-    res.status(200).send(result.test);
+    res.status(200).send(result);
   }
 }
 
 function createDataJson(page, count){
-  console.log('another function');
   const options = {
     uri: `https://coinmarketcap.com/currencies/volume/24-hour`,
     transform: function (body) {
@@ -102,15 +96,12 @@ function createDataJson(page, count){
           'Total_records': items.length,
           'data':items
         }
-        console.log("total records=",items.length);
         json=JSON.stringify(json)
         fs.writeFileSync('data.json', json, 'utf8', function(err,res){
-          console.log('hello', err);
+          console.log('Error', err);
         });
         var result=[];
-        console.log('page', page);
-        console.log('count', count);
-        for(let i=(page*count)-count; i<=(page*count);i++){
+        for(let i=(page*count)-count; i<(page*count);i++){
           if(items[i]!=null){
             result.push(items[i]);
           }
@@ -125,6 +116,7 @@ function createDataJson(page, count){
       })
       .catch((err) => {
         console.log(err);
+        res.status(500).send();
       });
   });
 
