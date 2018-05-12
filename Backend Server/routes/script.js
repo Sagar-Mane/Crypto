@@ -32,7 +32,7 @@ exports.cryptoByVolumeTraded = async function (req, res){
           }
           test={
             'Total_records': data.Total_records,
-            'data': result
+            'data': data.data
           }
           resolve (test);
         }
@@ -108,7 +108,7 @@ function createDataJson(page, count){
         }
         var test = {
           'Total_records': items.length,
-          'data': result
+          'data': items
         };
         //console.log(result);
         resolve(test);
