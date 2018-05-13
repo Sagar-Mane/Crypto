@@ -39,7 +39,7 @@
 <script>
 import axios from 'axios'
 export default {
-  name: 'edit-Study',
+  name: 'table',
   data() {
     return {
       pagename: 'About',
