@@ -7,7 +7,7 @@ setInterval(function(){
   var d=new Date();
   console.log('Current time interval', d.toLocaleTimeString());
   cryptoAnalytics();
-}, 1000*60*10)
+}, 1000*60*30)
 
 async function cryptoAnalytics () {
   var result = await getData();
