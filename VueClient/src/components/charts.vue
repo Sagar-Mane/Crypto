@@ -1,6 +1,7 @@
 <template>
 <div class="ui container animated fadeIn">
-  <line-chart :data="data" />
+  <div class="ui header page-left-header">Volume traded by time of day</div>
+  <line-chart  :data="data" xtitle="Time" ytitle="Percentage"/>
 </div>
 </template>
 
@@ -15,7 +16,6 @@ import axios from 'axios'
     async created () {
       console.log("chart component created");
       var result = await this.getChartData();
-      var test=[];
       for(let i=0;i<result.data.length;i++){
         //console.log(result.data[i].name);
         var dummy={
@@ -26,17 +26,17 @@ import axios from 'axios'
         //console.log(result.data[i].history);
         for(let j=0;j<result.data[i].history.length;j++){
           //console.log(result.data[i].history[j].Timestamp);
-          var t=result.data[i].history[j].Timestamp
+          var d =new Date(result.data[i].history[j].Timestamp);
+          var t=d.toLocaleTimeString()
           var p=result.data[i].history[j].percentage_value
           var item={
             t : p
           }
-          //element[ yourKey ] = yourValue;
           dummy.data[t]=p
         }
         this.data.push(dummy);
       }
-      console.log(test);
+      console.log(this.data);
     },
     methods: {
       getChartData() {

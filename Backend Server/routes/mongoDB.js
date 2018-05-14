@@ -15,6 +15,7 @@ exports.connect=function(url,callback)
 				console.log('Connection established to', url);
 				connected=true;
 				callback(db);
+				client.close();
 			 }
 		});
 };

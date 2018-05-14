@@ -44,7 +44,7 @@ export default {
     return {
       pagename: 'About',
       currentPage: 1,
-      perPage: 10,
+      perPage: 5,
       total_rows: null,
       pageOptions: [5, 10, 15],
       filter: null,
