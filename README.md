@@ -12,6 +12,11 @@ Simple website which provides cryptocurrency rankings by volume traded over past
 - Start web server by command npm start from VueClient root directory.
 
 ## Screenshots
+<p align="center"><h4 align="center">Currency Ranking</h4><img src="https://github.com/Sagar-Mane/Crypto/blob/master/docs/screenshots/Ranking.PNG"/>
+
+#### Features Pagination, Per page option, filter option
+
+<p align="center"><h4 align="center">Currency analysis</h4><img src="https://github.com/Sagar-Mane/Crypto/blob/master/docs/screenshots/analytics.PNG"/>
 
 ## Design
 1. Creating data for cryptoByVolumeTradedPast24Hours API
