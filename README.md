@@ -21,7 +21,7 @@ Simple website which provides cryptocurrency rankings by volume traded over past
 ## Design
 1. Creating data for cryptoByVolumeTradedPast24Hours API
 - data source- https://coinmarketcap.com Creating data.json from source after every 10 minutes to keep the data updated and selecting only those currencies which have volume more than 0% 
-2. Analytics- Storing top currencies volume data in MondoDB and updating it every half an hour in the history for each currency so that API can return volume traded for those currencies by time of day.
+2. Analytics- Storing top currencies volume data in MongoDB and updating it every half an hour in the history for each currency so that API can return volume traded for those currencies by time of day.
 
 ## API Reference 
 It contains two APIs -  One for getting Crypto Currency rankings by volume traded over the past 24 hours 
