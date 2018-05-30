@@ -43,7 +43,7 @@ function getData() {
     rp(options)
       .then(($) => {
         var items=[];
-        $('.volume-header-container').each(function(i, elem) {
+        $('.volume-header').each(function(i, elem) {
           var element= $(this).text();
           var pattern1 = /[a-zA-Z_ ]+/;
           var pattern2= /\d+.\d+%/;

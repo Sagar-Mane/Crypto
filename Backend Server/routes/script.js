@@ -69,7 +69,7 @@ function createDataJson(page, count){
         //console.log(data);
         var items=[];
         var test_items=[];
-        $('.volume-header-container').each(function(i, elem) {
+        $('.volume-header').each(function(i, elem) {
           var element= $(this).text();
           test_items[i]=element;
           var pattern1 = /[a-zA-Z_ ]+/;
