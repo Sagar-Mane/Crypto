@@ -15,8 +15,12 @@
   "homepage": "https://github.com/Sagar-Mane/Crypto#readme",
   "dependencies": {
     "body-parser": "^1.18.2",
+    "cheerio": "^1.0.0-rc.2",
     "concurrently": "^3.5.1",
     "cors": "^2.8.4",
-    "express": "^4.16.3"
+    "express": "^4.16.3",
+    "mongodb": "^3.0.10",
+    "request": "^2.87.0",
+    "request-promise": "^4.2.2"
   }
 }
